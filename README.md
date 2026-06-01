@@ -10,3 +10,36 @@
 ```
 dotnet add package Soenneker.Cloudflare.Registrar
 ```
+
+## Usage
+
+```csharp
+using Soenneker.Cloudflare.Registrar.Registrars;
+
+services.AddCloudflareRegistrarUtilAsScoped();
+```
+
+```csharp
+using Soenneker.Cloudflare.Registrar.Abstract;
+
+public sealed class RegistrarService
+{
+    private readonly ICloudflareRegistrarUtil _registrarUtil;
+
+    public RegistrarService(ICloudflareRegistrarUtil registrarUtil)
+    {
+        _registrarUtil = registrarUtil;
+    }
+
+    public async Task Search(string accountId, CancellationToken cancellationToken = default)
+    {
+        var result = await _registrarUtil.SearchDomains(accountId, config =>
+        {
+            config.QueryParameters.Q = "example";
+            config.QueryParameters.Limit = 10;
+        }, cancellationToken);
+    }
+}
+```
+
+`ICloudflareRegistrarUtil.Get(accountId)` returns the generated Cloudflare Registrar request builder for direct access to any registrar endpoint exposed by `Soenneker.Cloudflare.OpenApiClient`.

@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Soenneker.Cloudflare.Registrar.Abstract;
+using Soenneker.Cloudflare.Utils.Client.Registrars;
 
 namespace Soenneker.Cloudflare.Registrar.Registrars;
 
@@ -14,6 +15,7 @@ public static class CloudflareRegistrarUtilRegistrar
     /// </summary>
     public static IServiceCollection AddCloudflareRegistrarUtilAsSingleton(this IServiceCollection services)
     {
+        services.AddCloudflareClientUtilAsSingleton();
         services.TryAddSingleton<ICloudflareRegistrarUtil, CloudflareRegistrarUtil>();
 
         return services;
@@ -24,6 +26,7 @@ public static class CloudflareRegistrarUtilRegistrar
     /// </summary>
     public static IServiceCollection AddCloudflareRegistrarUtilAsScoped(this IServiceCollection services)
     {
+        services.AddCloudflareClientUtilAsScoped();
         services.TryAddScoped<ICloudflareRegistrarUtil, CloudflareRegistrarUtil>();
 
         return services;

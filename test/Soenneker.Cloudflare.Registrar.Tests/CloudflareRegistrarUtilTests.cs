@@ -14,7 +14,6 @@ public sealed class CloudflareRegistrarUtilTests : HostedUnitTest
     }
 
     [Test]
-    [Skip("Manual")]
     public void Default()
     {
 
