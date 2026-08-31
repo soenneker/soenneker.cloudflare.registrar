@@ -26,7 +26,7 @@ public static class CloudflareRegistrarUtilRegistrar
     /// </summary>
     public static IServiceCollection AddCloudflareRegistrarUtilAsScoped(this IServiceCollection services)
     {
-        services.AddCloudflareClientUtilAsScoped();
+        services.AddCloudflareClientUtilAsSingleton();
         services.TryAddScoped<ICloudflareRegistrarUtil, CloudflareRegistrarUtil>();
 
         return services;
