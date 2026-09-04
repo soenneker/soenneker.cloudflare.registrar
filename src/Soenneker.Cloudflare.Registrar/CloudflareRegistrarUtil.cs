@@ -13,6 +13,7 @@ using Soenneker.Extensions.ValueTask;
 
 namespace Soenneker.Cloudflare.Registrar;
 
+/// <inheritdoc cref="ICloudflareRegistrarUtil" />
 public sealed class CloudflareRegistrarUtil : ICloudflareRegistrarUtil
 {
     private readonly ICloudflareClientUtil _cloudflareClientUtil;
