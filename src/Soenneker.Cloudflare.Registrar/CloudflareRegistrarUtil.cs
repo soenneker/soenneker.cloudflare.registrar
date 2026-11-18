@@ -30,7 +30,7 @@ public sealed class CloudflareRegistrarUtil : ICloudflareRegistrarUtil
         return client.Accounts[accountId].Registrar;
     }
 
-    public async ValueTask<RegistrarApiDomainSearchResponse?> SearchDomains(string accountId,
+    public async ValueTask<RegistrarDomainSearchResponse?> SearchDomains(string accountId,
         Action<RequestConfiguration<DomainSearchRequestBuilder.DomainSearchRequestBuilderGetQueryParameters>>?
             requestConfiguration = null, CancellationToken cancellationToken = default)
     {
@@ -39,8 +39,8 @@ public sealed class CloudflareRegistrarUtil : ICloudflareRegistrarUtil
         return await registrar.DomainSearch.GetAsync(requestConfiguration, cancellationToken).NoSync();
     }
 
-    public async ValueTask<RegistrarApiDomainCheckResponse?> CheckDomain(string accountId,
-        RegistrarApiDomainCheckRequest request,
+    public async ValueTask<RegistrarDomainCheckResponse?> CheckDomain(string accountId,
+        RegistrarDomainCheckRequest request,
         Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = null,
         CancellationToken cancellationToken = default)
     {
@@ -49,7 +49,7 @@ public sealed class CloudflareRegistrarUtil : ICloudflareRegistrarUtil
         return await registrar.DomainCheck.PostAsync(request, requestConfiguration, cancellationToken).NoSync();
     }
 
-    public async ValueTask<RegistrarApiRegistrationResponseCollection?> GetRegistrations(string accountId,
+    public async ValueTask<RegistrarRegistrationResponseCollection?> GetRegistrations(string accountId,
         Action<RequestConfiguration<RegistrationsRequestBuilder.RegistrationsRequestBuilderGetQueryParameters>>?
             requestConfiguration = null, CancellationToken cancellationToken = default)
     {
@@ -58,8 +58,8 @@ public sealed class CloudflareRegistrarUtil : ICloudflareRegistrarUtil
         return await registrar.Registrations.GetAsync(requestConfiguration, cancellationToken).NoSync();
     }
 
-    public async ValueTask<RegistrarApiWorkflowStatusResponseSingle?> CreateRegistration(string accountId,
-        RegistrarApiRegistrationCreateRequest request,
+    public async ValueTask<RegistrarWorkflowStatusResponseSingle?> CreateRegistration(string accountId,
+        RegistrarRegistrationCreateRequest request,
         Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = null,
         CancellationToken cancellationToken = default)
     {
@@ -68,7 +68,7 @@ public sealed class CloudflareRegistrarUtil : ICloudflareRegistrarUtil
         return await registrar.Registrations.PostAsync(request, requestConfiguration, cancellationToken).NoSync();
     }
 
-    public async ValueTask<RegistrarApiRegistrationResponseSingle?> GetRegistration(string accountId, string domainName,
+    public async ValueTask<RegistrarRegistrationResponseSingle?> GetRegistration(string accountId, string domainName,
         Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = null,
         CancellationToken cancellationToken = default)
     {
@@ -77,8 +77,8 @@ public sealed class CloudflareRegistrarUtil : ICloudflareRegistrarUtil
         return await registrar.Registrations[domainName].GetAsync(requestConfiguration, cancellationToken).NoSync();
     }
 
-    public async ValueTask<RegistrarApiWorkflowStatusResponseSingle?> UpdateRegistration(string accountId,
-        string domainName, RegistrarApiRegistrationUpdateRequest request,
+    public async ValueTask<RegistrarWorkflowStatusResponseSingle?> UpdateRegistration(string accountId,
+        string domainName, RegistrarRegistrationUpdateRequest request,
         Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = null,
         CancellationToken cancellationToken = default)
     {
@@ -88,7 +88,7 @@ public sealed class CloudflareRegistrarUtil : ICloudflareRegistrarUtil
                               .NoSync();
     }
 
-    public async ValueTask<RegistrarApiWorkflowStatusResponseSingle?> GetRegistrationStatus(string accountId,
+    public async ValueTask<RegistrarWorkflowStatusResponseSingle?> GetRegistrationStatus(string accountId,
         string domainName, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = null,
         CancellationToken cancellationToken = default)
     {
@@ -98,7 +98,7 @@ public sealed class CloudflareRegistrarUtil : ICloudflareRegistrarUtil
                               .GetAsync(requestConfiguration, cancellationToken).NoSync();
     }
 
-    public async ValueTask<RegistrarApiWorkflowStatusResponseSingle?> GetUpdateStatus(string accountId,
+    public async ValueTask<RegistrarWorkflowStatusResponseSingle?> GetUpdateStatus(string accountId,
         string domainName, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = null,
         CancellationToken cancellationToken = default)
     {
