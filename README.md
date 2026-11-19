@@ -61,14 +61,14 @@ public sealed class RegistrarService
 }
 ```
 
-`SearchDomains` accepts the generated query parameters, including result limits. `CheckDomain` accepts a `RegistrarApiDomainCheckRequest` when a dedicated availability check is preferable.
+`SearchDomains` accepts the generated query parameters, including result limits. `CheckDomain` accepts a `RegistrarDomainCheckRequest` when a dedicated availability check is preferable.
 
 ## Registrations
 
-Use `CreateRegistration` to submit a `RegistrarApiRegistrationCreateRequest`, then inspect the returned workflow status. `GetRegistrationStatus` reports registration progress; `GetUpdateStatus` reports changes submitted through `UpdateRegistration`.
+Use `CreateRegistration` to submit a `RegistrarRegistrationCreateRequest`, then inspect the returned workflow status. `GetRegistrationStatus` reports registration progress; `GetUpdateStatus` reports changes submitted through `UpdateRegistration`.
 
 ```csharp
-RegistrarApiRegistrationResponseSingle? registration =
+RegistrarRegistrationResponseSingle? registration =
     await registrar.GetRegistration(accountId, "example.com", cancellationToken: cancellationToken);
 ```
 

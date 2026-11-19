@@ -22,50 +22,50 @@ public interface ICloudflareRegistrarUtil
     /// <summary>
     /// Search for domains available through Cloudflare Registrar.
     /// </summary>
-    ValueTask<RegistrarApiDomainSearchResponse?> SearchDomains(string accountId,
+    ValueTask<RegistrarDomainSearchResponse?> SearchDomains(string accountId,
         Action<RequestConfiguration<DomainSearchRequestBuilder.DomainSearchRequestBuilderGetQueryParameters>>? requestConfiguration = null,
         CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Check domain availability through Cloudflare Registrar.
     /// </summary>
-    ValueTask<RegistrarApiDomainCheckResponse?> CheckDomain(string accountId, RegistrarApiDomainCheckRequest request,
+    ValueTask<RegistrarDomainCheckResponse?> CheckDomain(string accountId, RegistrarDomainCheckRequest request,
         Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List registrations for a Cloudflare account.
     /// </summary>
-    ValueTask<RegistrarApiRegistrationResponseCollection?> GetRegistrations(string accountId,
+    ValueTask<RegistrarRegistrationResponseCollection?> GetRegistrations(string accountId,
         Action<RequestConfiguration<RegistrationsRequestBuilder.RegistrationsRequestBuilderGetQueryParameters>>? requestConfiguration = null,
         CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Create a domain registration.
     /// </summary>
-    ValueTask<RegistrarApiWorkflowStatusResponseSingle?> CreateRegistration(string accountId, RegistrarApiRegistrationCreateRequest request,
+    ValueTask<RegistrarWorkflowStatusResponseSingle?> CreateRegistration(string accountId, RegistrarRegistrationCreateRequest request,
         Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get a domain registration.
     /// </summary>
-    ValueTask<RegistrarApiRegistrationResponseSingle?> GetRegistration(string accountId, string domainName,
+    ValueTask<RegistrarRegistrationResponseSingle?> GetRegistration(string accountId, string domainName,
         Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update a domain registration.
     /// </summary>
-    ValueTask<RegistrarApiWorkflowStatusResponseSingle?> UpdateRegistration(string accountId, string domainName, RegistrarApiRegistrationUpdateRequest request,
+    ValueTask<RegistrarWorkflowStatusResponseSingle?> UpdateRegistration(string accountId, string domainName, RegistrarRegistrationUpdateRequest request,
         Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get the registration workflow status for a domain.
     /// </summary>
-    ValueTask<RegistrarApiWorkflowStatusResponseSingle?> GetRegistrationStatus(string accountId, string domainName,
+    ValueTask<RegistrarWorkflowStatusResponseSingle?> GetRegistrationStatus(string accountId, string domainName,
         Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get the update workflow status for a domain.
     /// </summary>
-    ValueTask<RegistrarApiWorkflowStatusResponseSingle?> GetUpdateStatus(string accountId, string domainName,
+    ValueTask<RegistrarWorkflowStatusResponseSingle?> GetUpdateStatus(string accountId, string domainName,
         Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = null, CancellationToken cancellationToken = default);
 }
